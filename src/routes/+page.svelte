@@ -3,10 +3,20 @@
   const brandName = "John 316";
   const siteDescription = "遇見一杯溫暖與良善。John 316 用最純粹的在地茶葉與軟萌小羊，溫暖你的日常。";
   
-  // 最新活動資料
+  // 最新活動資料（新增了 image 欄位，可用相對路徑或外部圖片）
   const events = [
-    { title: "奶昔全系列 🌟 加ORE碎片", desc: "限時嚐鮮！冰涼濃醇鮮奶且不膩口的奶昔，加上OREO碎片，口感加倍。", badge: "熱賣中" },
-    { title: "自備環保杯 🌍 療癒大地球", desc: "響應環保，凡自備環保杯至各分店購買任意飲品，現折 5 元！", badge: "長期活動" }
+    { 
+      title: "奶昔全系列 🌟 加ORE碎片", 
+      desc: "限時嚐鮮！冰涼濃醇鮮奶且不膩口的奶昔，加上OREO碎片，口感加倍。", 
+      badge: "熱賣中",
+      image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&q=80&w=600" // 替換成你的奶昔活動照
+    },
+    { 
+      title: "自備環保杯 🌍 療癒大地球", 
+      desc: "響應環保，凡自備環保杯至各分店購買任意飲品，現折 5 元！", 
+      badge: "長期活動",
+      image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" // 替換成你的環保杯活動照
+    }
   ];
 
   // 分店資訊
@@ -60,32 +70,21 @@
   </div>
 {/if}
 
+<section id="concept" class="section-concept-wrapper">
+  <div class="concept-banner">
+    <img src="brand_picture.png" alt="John 316 品牌故事滿版大圖" class="banner-img" />
+    <div class="banner-overlay"></div>
+  </div>
+</section>
+
 <header class="hero">
   <div class="hero-content">
     <img src="/logo.svg" alt="John 316 大 Logo" class="hero-logo" />
-    <h1>遇見一杯溫暖與良善</h1>
+    <h1>遇見一杯滿足與喜樂</h1>
     <p>日常裡的微小歇息，都有小羊陪著你。</p>
     <a href="#events" class="btn-primary">看看今天喝什麼 ➔</a>
   </div>
 </header>
-
-<section id="concept" class="section-concept">
-  <div class="container">
-    <h2 class="section-title">品牌理念</h2>
-    <div class="concept-grid">
-      <div class="concept-text">
-        <h3>「像小羊一樣純粹，像家一樣溫暖」</h3>
-        <p>John 316 誕生於對純粹茶香的堅持與對生活的溫柔關懷。我們精心篩選在地契作茶葉，搭配小農鮮乳，不添加多餘的化學點綴。</p>
-        <p>我們希望每一杯遞到你手中的茶飲，不僅僅是解渴的載體，更是能為你疲憊的一天帶來會心一笑、感到被療癒的溫暖力量。</p>
-      </div>
-      <div class="concept-badge-box">
-        <div class="badge-item">🐑 100% 療癒插畫</div>
-        <div class="badge-item">🍃 在地天然好茶</div>
-        <div class="badge-item">🥛 嚴選小農鮮乳</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="events" class="section-events">
   <div class="container">
@@ -93,9 +92,14 @@
     <div class="events-grid">
       {#each events as event}
         <div class="event-card">
-          <span class="event-badge">{event.badge}</span>
-          <h3>{event.title}</h3>
-          <p>{event.desc}</p>
+          <div class="event-img-wrapper">
+            <span class="event-badge">{event.badge}</span>
+            <img src={event.image} alt={event.title} class="event-card-img" />
+          </div>
+          <div class="event-card-body">
+            <h3>{event.title}</h3>
+            <p>{event.desc}</p>
+          </div>
         </div>
       {/each}
     </div>
@@ -133,7 +137,7 @@
         <div class="feat">📈 健全供應鏈，嚴格控管原物料品質</div>
       </div>
       <a href="tel:0921954246" class="btn-franchise">
-        📝 加盟電話聯絡：0921954246 (吳小姐)
+        📝 加盟電話聯絡：0921954246 (吳專員)
       </a>
     </div>
   </div>
@@ -158,7 +162,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 John 316. All Rights Reserved. 遇見一杯溫暖與良善。</p>
+    <p>© 2026 John 316. All Rights Reserved. 遇見一杯滿足與喜樂。</p>
   </div>
 </footer>
 
@@ -187,39 +191,31 @@
     text-align: center;
     font-size: 2.2rem;
     color: #004B97;
-    margin-bottom: 3rem;
     position: relative;
   }
-  .section-title::after {
-    content: "🐑";
-    display: block;
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-  }
 
-  /* 導覽列（加高與文字翻白優化） */
+  /* 導覽列 */
   nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #0492c2; /* 主要背景藍 */
+    background-color: #004B97; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     z-index: 100;
   }
   .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 18px 24px; /* 2. 上下高度加高（原本為 12px） */
+    padding: 18px 24px; 
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   
-  /* 行動端專用平衡錨點 */
   .nav-placeholder-mobile {
     display: none;
-    width: 25px; /* 與漢堡按鈕同寬 */
+    width: 25px; 
   }
 
   .brand {
@@ -228,11 +224,11 @@
     gap: 10px;
   }
   .nav-logo {
-    height: 45px; /* 配合導覽列微調大一點點 */
+    height: 60px; 
     width: auto;
   }
   .nav-logo-word {
-    height: 22px;
+    height: 60px;
     width: auto;
   }
   
@@ -245,17 +241,17 @@
   }
   .nav-links a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.85); /* 1. 文字改為白色 */
+    color: rgba(255, 255, 255, 0.85); 
     font-weight: 500;
     font-size: 1.05rem;
     transition: color 0.2s;
   }
   .nav-links a:hover {
-    color: #ffffff; /* 懸浮改為全亮白 */
+    color: #ffffff; 
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
   }
 
-  /* 漢堡選單 (手機用) */
+  /* 漢堡選單 */
   .burger {
     display: none;
     background: none;
@@ -268,17 +264,17 @@
   .burger span {
     width: 25px;
     height: 3px;
-    background-color: #ffffff; /* 漢堡線條改為白色 */
+    background-color: #ffffff; 
     transition: 0.3s;
   }
 
-  /* 手機版下拉選單群 */
+  /* 手機版下拉選單 */
   .mobile-menu {
     position: fixed;
-    top: 81px; /* 根據加高的導覽列動態向下修正位置 */
+    top: 96px; /* 配合新的 navbar 高度優化修正 */
     left: 0;
     width: 100%;
-    background-color: #0492c2; /* 與導覽列同色系一體化 */
+    background-color: #004B97; 
     display: flex;
     flex-direction: column;
     padding: 0.5rem 0;
@@ -288,16 +284,16 @@
   .mobile-menu a {
     padding: 16px 28px;
     text-decoration: none;
-    color: #ffffff; /* 行動選單文字改白 */
+    color: #ffffff; 
     font-weight: 500;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   /* 主視覺區 Hero */
   .hero {
-    padding-top: 160px; /* 防止加高的 nav 壓到內容 */
+    padding-top: 180px; 
     padding-bottom: 80px;
-    background: linear-gradient(180deg, #edf5fa 0%, #fbf9f5 100%);
+    background: #fcf6eb;
     text-align: center;
   }
   .hero-logo {
@@ -335,14 +331,40 @@
     transform: scale(1.03);
   }
 
-  /* 區塊通用間距 */
   section {
     padding: 6rem 0;
   }
 
-  /* 1. 品牌理念 */
-  .section-concept {
+  /* ==========================================
+     修訂 1：品牌理念左右滿版照片與排版優化
+     ========================================== */
+  .section-concept-wrapper {
+    position: relative;
+    padding: 0; /* 移除預設上下 padding 由內容撐開 */
     background-color: #ffffff;
+    overflow: hidden;
+  }
+  .concept-banner {
+    position: relative;
+    width: 100%;
+    height: auto; /* 電腦版高度 */
+  }
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 滿版裁切不變形 */
+    object-position: center;
+  }
+  .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(255,255,255,1) 100%); /* 底部完美融合白色區塊 */
+  }
+  .concept-content-container {
+    padding-bottom: 6rem;
   }
   .concept-grid {
     display: grid;
@@ -350,9 +372,15 @@
     gap: 4rem;
     align-items: center;
   }
+  .concept-section-title {
+    font-size: 2.2rem;
+    color: #004B97;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
   .concept-text h3 {
     font-size: 1.6rem;
-    color: #0492C2;
+    color: #004B97;
     margin-bottom: 1.5rem;
   }
   .concept-text p {
@@ -375,50 +403,78 @@
     font-size: 1.1rem;
   }
 
-  /* 2. 最新活動 */
+  /* ==========================================
+     修訂 2：最新活動卡片加圖自適應
+     ========================================== */
   .section-events {
-    background-color: #fcf6eb;
+    background-color: #edf5fa;
   }
   .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
   }
   .event-card {
     background: white;
-    padding: 2.5rem 2rem;
     border-radius: 24px;
     border: 1px solid #f2e2cb;
-    box-shadow: 0 4px 20px rgba(220, 200, 170, 0.15);
-    position: relative;
+    box-shadow: 0 6px 25px rgba(220, 200, 170, 0.15);
+    overflow: hidden; /* 確保內層圖片圓角不溢出 */
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s;
   }
   .event-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+  }
+  .event-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px; /* 固定圖片顯示高度比例 */
+    overflow: hidden;
+  }
+  .event-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 自動縮放填滿容器且不變形 */
+    transition: transform 0.5s ease;
+  }
+  .event-card:hover .event-card-img {
+    transform: scale(1.05); /* 懸浮時圖片微放大，增加互動感 */
   }
   .event-badge {
     position: absolute;
-    top: -12px;
-    left: 24px;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
     background-color: #004B97;
     color: white;
-    padding: 4px 14px;
+    padding: 6px 14px;
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
-  .event-card h3 {
-    margin-top: 0.5rem;
+  .event-card-body {
+    padding: 2rem;
+    flex-grow: 1; /* 確保卡片內容高度不一時仍能自動對齊 */
+    display: flex;
+    flex-direction: column;
+  }
+  .event-card-body h3 {
+    margin: 0 0 0.8rem 0;
     color: #2b3a4a;
+    font-size: 1.3rem;
   }
-  .event-card p {
+  .event-card-body p {
     color: #6a7f96;
     line-height: 1.6;
+    margin: 0;
   }
 
-  /* 3. 分店資訊 */
+  /* 分店資訊 */
   .section-stores {
-    background-color: #ffffff;
+    background-color: #fcf6eb;
   }
   .stores-grid {
     display: grid;
@@ -429,7 +485,7 @@
     background: #fbf9f5;
     padding: 2rem;
     border-radius: 20px;
-    border-left: 6px solid #0492C2;
+    border-left: 6px solid:#004B97;
     box-shadow: 0 4px 10px rgba(0,0,0,0.02);
   }
   .store-card h3 {
@@ -442,7 +498,7 @@
     color: #5a6e85;
   }
 
-  /* 4. 加盟專區 */
+  /* 加盟專區 */
   .section-franchise {
     background-color: #edf5fa;
   }
@@ -477,7 +533,7 @@
   }
   .btn-franchise {
     display: inline-block;
-    background-color: #0492C2;
+    background-color: #004B97;
     color: white;
     text-decoration: none;
     padding: 14px 36px;
@@ -492,10 +548,10 @@
     transform: translateY(-2px);
   }
 
-  /* 頁尾資訊（文字全面換白） */
+  /* 頁尾資訊 */
   footer {
-    background-color: #0492c2; /* 使用明亮招牌藍 */
-    color: #ffffff; /* 1. 改為純白 */
+    background-color: #004B97; 
+    color: #ffffff; 
     padding: 4rem 0 2rem 0;
   }
   .footer-container {
@@ -528,14 +584,14 @@
   }
   .footer-info p {
     margin: 0.8rem 0;
-    color: rgba(255, 255, 255, 0.9); /* 1. 段落文字改為微亮白，不刺眼 */
+    color: rgba(255, 255, 255, 0.9); 
     font-size: 1.05rem;
   }
   .footer-info strong {
     color: #ffffff;
   }
   .line-link {
-    color: #26e646; /* 在藍底上微調更亮眼的 LINE 綠色 */
+    color: #26e646; 
     text-decoration: none;
     font-weight: bold;
   }
@@ -551,7 +607,7 @@
   }
 
   /* ==========================================================================
-     響應式設計媒體查詢 (Responsive Media Queries)
+      響應式設計媒體查詢 (Responsive Media Queries)
      ========================================================================== */
 
   @media (max-width: 960px) {
@@ -567,14 +623,13 @@
     }
   }
 
-  /* 3. 手機行動端導覽列 Logo 置中修正 */
   @media (max-width: 768px) {
     .nav-container {
-      padding: 12px 24px; /* 手機端高度微調，更輕量舒適 */
+      padding: 12px 24px; 
     }
     
     .nav-placeholder-mobile {
-      display: block; /* 啟用左側占位區，把中央 Logo 完美往右推 */
+      display: block; 
     }
 
     .nav-links {
@@ -582,9 +637,13 @@
     }
     
     .burger {
-      display: flex; /* 保持在最右側 */
+      display: flex; 
     }
     
+    .mobile-menu {
+      top: 84px; /* 針對縮小的行動端 navbar 重調下拉選單頂部間距 */
+    }
+
     /* 漢堡按鈕動畫轉 X */
     .burger span.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .burger span.open:nth-child(2) { opacity: 0; }
@@ -598,6 +657,15 @@
     }
     .section-title {
       font-size: 1.8rem;
+    }
+
+    /* 調整手機板品牌概念滿版圖高度 */
+    .concept-banner {
+      height: 250px;
+    }
+    .concept-content-container {
+      padding-top: 2rem;
+      padding-bottom: 4rem;
     }
 
     .footer-container {
