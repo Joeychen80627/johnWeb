@@ -197,6 +197,7 @@
   }
 
   /* 導覽列 */
+  /* 導覽列 */
   nav {
     position: fixed;
     top: 0;
@@ -205,6 +206,9 @@
     background-color: #004B97; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     z-index: 100;
+    
+    /* 🟢 關鍵修正：自動避開手機瀏海與動態島 */
+    padding-top: env(safe-area-inset-top, 0px); 
   }
   .nav-container {
     max-width: 1200px;
@@ -273,7 +277,8 @@
   /* 手機版下拉選單 */
   .mobile-menu {
     position: fixed;
-    top: 96px; 
+    /* 🟢 修正：動態計算導覽列高度，加上安全區域 */
+    top: calc(84px + env(safe-area-inset-top, 0px)); 
     left: 0;
     width: 100%;
     background-color: #004B97; 
@@ -602,7 +607,7 @@
 
     /* 【修正手機版排版】 */
     .section-concept-wrapper {
-      margin-top: 84px; /* 貼合手機版 Navbar 的高度，防止最頂部被切掉 */
+      margin-top: calc(84px + env(safe-area-inset-top, 0px));    
     }
     .concept-banner {
       height: auto; /* 移除死硬的 250px，交由原圖比例撐開，徹底解決變形與多餘空白問題 */
