@@ -207,7 +207,7 @@
     z-index: 100;
   }
   .nav-container {
-    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 18px 24px; 
     display: flex;
@@ -576,10 +576,19 @@
   }
 
   @media (max-width: 768px) {
+    /* 🟢 修正 1：直接加大手機版 Navbar 的上下內距，強制推開留白 */
     .nav-container {
-      padding: 12px 24px; 
+      padding: 24px 20px !important; /* 增加上下留白（從12px改成24px） */
     }
     
+    /* 🟢 修正 2：微調手機版 Logo 高度，讓文字跟羊羊有空間呼吸 */
+    .nav-logo {
+      height: 48px !important; /* 電腦版是 60px，手機版縮到 48px 比例最精緻 */
+    }
+    .nav-logo-word {
+      height: 48px !important; /* 字體同步縮小，確保置中對齊 */
+    }
+
     .nav-placeholder-mobile {
       display: block; 
     }
@@ -592,23 +601,24 @@
       display: flex; 
     }
     
+    /* 🟢 修正 3：因為 Navbar 變高了，選單下拉位置和圖片外距要同步加大 */
     .mobile-menu {
-      top: 84px; 
+      top: 96px; 
     }
-
+    .section-concept-wrapper {
+      margin-top: 96px; /* 完美避開變高的 Navbar，大圖最頂部的字絕不被切 */
+    }
+    .concept-banner {
+      height: auto;
+    }
+    
+    /* 後面的漢堡選單旋轉動畫保持不變... */
     .burger span.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .burger span.open:nth-child(2) { opacity: 0; }
     .burger span.open:nth-child(3) { transform: rotate(-45deg) translate(6px, -7px); }
 
-    /* 【修正手機版排版】 */
-    .section-concept-wrapper {
-      margin-top: 84px; /* 貼合手機版 Navbar 的高度，防止最頂部被切掉 */
-    }
-    .concept-banner {
-      height: auto; /* 移除死硬的 250px，交由原圖比例撐開，徹底解決變形與多餘空白問題 */
-    }
     .hero {
-      padding-top: 20px; /* 大幅縮減與上方大圖銜接的間距，視覺更流暢緊湊 */
+      padding-top: 20px;
       padding-bottom: 60px;
     }
     .hero h1 { font-size: 2rem; }
