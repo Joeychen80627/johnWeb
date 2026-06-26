@@ -3,19 +3,19 @@
   const brandName = "John 316";
   const siteDescription = "遇見一杯溫暖與良善。John 316 用最純粹的在地茶葉與軟萌小羊，溫暖你的日常。";
   
-  // 最新活動資料（新增了 image 欄位，可用相對路徑或外部圖片）
+  // 最新活動資料
   const events = [
     { 
-      title: "奶昔全系列 🌟 加ORE碎片", 
+      title: "奶昔全系列 🌟 加OREO碎片", 
       desc: "限時嚐鮮！冰涼濃醇鮮奶且不膩口的奶昔，加上OREO碎片，口感加倍。", 
       badge: "熱賣中",
-      image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&q=80&w=600" // 替換成你的奶昔活動照
+      image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&q=80&w=600"
     },
     { 
       title: "自備環保杯 🌍 療癒大地球", 
       desc: "響應環保，凡自備環保杯至各分店購買任意飲品，現折 5 元！", 
       badge: "長期活動",
-      image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" // 替換成你的環保杯活動照
+      image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600"
     }
   ];
 
@@ -25,8 +25,8 @@
     { name: "日本東京店（籌備中）" }
   ];
 
-  // 行動導覽列開關 (手機版專用)
-  let isMenuOpen = false;
+  // 【修正語法 1】使用 Svelte 5 的 $state 聲明反應性變數
+  let isMenuOpen = $state(false);
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
   }
@@ -50,10 +50,11 @@
       <li><a href="#concept">品牌理念</a></li>
       <li><a href="#events">最新活動</a></li>
       <li><a href="#stores">分店資訊</a></li>
-      <li><a href="#franchise">加盟專區</a></li>
+      <li><a href="#franchise">加盟專專區</a></li>
     </ul>
 
-    <button class="burger" on:click={toggleMenu} aria-label="Toggle Menu">
+    <!-- 【修正語法 2】將 on:click 改成 Svelte 5 的 onclick -->
+    <button class="burger" onclick={toggleMenu} aria-label="Toggle Menu">
       <span class={isMenuOpen ? "open" : ""}></span>
       <span class={isMenuOpen ? "open" : ""}></span>
       <span class={isMenuOpen ? "open" : ""}></span>
@@ -62,14 +63,16 @@
 </nav>
 
 {#if isMenuOpen}
+  <!-- 【修正語法 3】將行動版選單的 on:click 改成 onclick -->
   <div class="mobile-menu">
-    <a href="#concept" on:click={toggleMenu}>品牌理念</a>
-    <a href="#events" on:click={toggleMenu}>最新活動</a>
-    <a href="#stores" on:click={toggleMenu}>分店資訊</a>
-    <a href="#franchise" on:click={toggleMenu}>加盟專區</a>
+    <a href="#concept" onclick={toggleMenu}>品牌理念</a>
+    <a href="#events" onclick={toggleMenu}>最新活動</a>
+    <a href="#stores" onclick={toggleMenu}>分店資訊</a>
+    <a href="#franchise" onclick={toggleMenu}>加盟專區</a>
   </div>
 {/if}
 
+<!-- 【優化排版】調整品牌大圖區塊結構 -->
 <section id="concept" class="section-concept-wrapper">
   <div class="concept-banner">
     <img src="brand_picture.png" alt="John 316 品牌故事滿版大圖" class="banner-img" />
@@ -77,6 +80,7 @@
   </div>
 </section>
 
+<!-- 【優化排版】微調 Hero 區塊間距 -->
 <header class="hero">
   <div class="hero-content">
     <img src="/logo.svg" alt="John 316 大 Logo" class="hero-logo" />
@@ -167,7 +171,6 @@
 </footer>
 
 <style>
-  /* 全域基本樣式：文青米白與深藍色系 */
   :global(html) {
     scroll-behavior: smooth;
   }
@@ -176,8 +179,8 @@
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
-    background-color: #fbf9f5; /* 溫暖燕麥白 */
-    color: #2b3a4a; /* 深暖灰藍 */
+    background-color: #fbf9f5;
+    color: #2b3a4a;
   }
 
   .container {
@@ -186,7 +189,6 @@
     padding: 0 24px;
   }
 
-  /* 共同標題樣式 */
   .section-title {
     text-align: center;
     font-size: 2.2rem;
@@ -271,7 +273,7 @@
   /* 手機版下拉選單 */
   .mobile-menu {
     position: fixed;
-    top: 96px; /* 配合新的 navbar 高度優化修正 */
+    top: 96px; 
     left: 0;
     width: 100%;
     background-color: #004B97; 
@@ -291,7 +293,7 @@
 
   /* 主視覺區 Hero */
   .hero {
-    padding-top: 180px; 
+    padding-top: 60px; /* 【修正間距】大幅縮減原本 180px 造成的空白斷層 */
     padding-bottom: 80px;
     background: #fcf6eb;
     text-align: center;
@@ -336,24 +338,25 @@
   }
 
   /* ==========================================
-     修訂 1：品牌理念左右滿版照片與排版優化
+     修訂 1：品牌理念滿版照片排版優化
      ========================================== */
   .section-concept-wrapper {
     position: relative;
-    padding: 0; /* 移除預設上下 padding 由內容撐開 */
+    padding: 0;
     background-color: #ffffff;
     overflow: hidden;
+    margin-top: 96px; /* 【修正切圖】確保電腦版不會被 Navbar 擋到大圖 */
   }
   .concept-banner {
     position: relative;
     width: 100%;
-    height: auto; /* 電腦版高度 */
+    height: auto; 
   }
   .banner-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* 滿版裁切不變形 */
-    object-position: center;
+    height: auto; /* 【修正拉伸】不要強行填死，改 auto 保持完美原圖比例 */
+    display: block;
+    object-fit: contain;
   }
   .banner-overlay {
     position: absolute;
@@ -361,51 +364,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(255,255,255,1) 100%); /* 底部完美融合白色區塊 */
-  }
-  .concept-content-container {
-    padding-bottom: 6rem;
-  }
-  .concept-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem;
-    align-items: center;
-  }
-  .concept-section-title {
-    font-size: 2.2rem;
-    color: #004B97;
-    margin-top: 0;
-    margin-bottom: 2rem;
-  }
-  .concept-text h3 {
-    font-size: 1.6rem;
-    color: #004B97;
-    margin-bottom: 1.5rem;
-  }
-  .concept-text p {
-    line-height: 1.8;
-    color: #5a6e85;
-    font-size: 1.1rem;
-  }
-  .concept-badge-box {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .badge-item {
-    background-color: #fdf8eb;
-    border: 2px dashed #e6cf9c;
-    padding: 1.2rem;
-    border-radius: 16px;
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.1rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(251,249,245,1) 100%); /* 與下方的燕麥色完美淡出融合 */
   }
 
-  /* ==========================================
-     修訂 2：最新活動卡片加圖自適應
-     ========================================== */
+  /* 最新活動 */
   .section-events {
     background-color: #edf5fa;
   }
@@ -419,7 +381,7 @@
     border-radius: 24px;
     border: 1px solid #f2e2cb;
     box-shadow: 0 6px 25px rgba(220, 200, 170, 0.15);
-    overflow: hidden; /* 確保內層圖片圓角不溢出 */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     transition: transform 0.3s;
@@ -430,17 +392,17 @@
   .event-img-wrapper {
     position: relative;
     width: 100%;
-    height: 200px; /* 固定圖片顯示高度比例 */
+    height: 200px; 
     overflow: hidden;
   }
   .event-card-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 自動縮放填滿容器且不變形 */
+    object-fit: cover; 
     transition: transform 0.5s ease;
   }
   .event-card:hover .event-card-img {
-    transform: scale(1.05); /* 懸浮時圖片微放大，增加互動感 */
+    transform: scale(1.05);
   }
   .event-badge {
     position: absolute;
@@ -457,7 +419,7 @@
   }
   .event-card-body {
     padding: 2rem;
-    flex-grow: 1; /* 確保卡片內容高度不一時仍能自動對齊 */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
   }
@@ -485,7 +447,7 @@
     background: #fbf9f5;
     padding: 2rem;
     border-radius: 20px;
-    border-left: 6px solid:#004B97;
+    border-left: 6px solid #004B97; /* 【修正 CSS 語法】修正了原本 solid 旁邊冒號的語法錯誤 */
     box-shadow: 0 4px 10px rgba(0,0,0,0.02);
   }
   .store-card h3 {
@@ -609,18 +571,8 @@
   /* ==========================================================================
       響應式設計媒體查詢 (Responsive Media Queries)
      ========================================================================== */
-
   @media (max-width: 960px) {
     .hero h1 { font-size: 2.4rem; }
-    .concept-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-    .concept-badge-box {
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
   }
 
   @media (max-width: 768px) {
@@ -641,14 +593,24 @@
     }
     
     .mobile-menu {
-      top: 84px; /* 針對縮小的行動端 navbar 重調下拉選單頂部間距 */
+      top: 84px; 
     }
 
-    /* 漢堡按鈕動畫轉 X */
     .burger span.open:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .burger span.open:nth-child(2) { opacity: 0; }
     .burger span.open:nth-child(3) { transform: rotate(-45deg) translate(6px, -7px); }
 
+    /* 【修正手機版排版】 */
+    .section-concept-wrapper {
+      margin-top: 84px; /* 貼合手機版 Navbar 的高度，防止最頂部被切掉 */
+    }
+    .concept-banner {
+      height: auto; /* 移除死硬的 250px，交由原圖比例撐開，徹底解決變形與多餘空白問題 */
+    }
+    .hero {
+      padding-top: 20px; /* 大幅縮減與上方大圖銜接的間距，視覺更流暢緊湊 */
+      padding-bottom: 60px;
+    }
     .hero h1 { font-size: 2rem; }
     .hero p { font-size: 1rem; }
     
@@ -657,15 +619,6 @@
     }
     .section-title {
       font-size: 1.8rem;
-    }
-
-    /* 調整手機板品牌概念滿版圖高度 */
-    .concept-banner {
-      height: 250px;
-    }
-    .concept-content-container {
-      padding-top: 2rem;
-      padding-bottom: 4rem;
     }
 
     .footer-container {
