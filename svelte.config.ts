@@ -1,9 +1,15 @@
 import adapter from '@sveltejs/adapter-node';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-export default {
-    preprocess: vitePreprocess(),
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
     kit: {
-        adapter: adapter()
+        adapter: adapter(),
+        compilerOptions: {
+            // 這就是你原本在 vite.config 裡的 runes 設定
+            runes: ({ filename }) =>
+                filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+        }
     }
 };
+
+export default config;
