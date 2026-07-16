@@ -5,9 +5,9 @@ const config = {
     kit: {
         adapter: adapter(),
         compilerOptions: {
-            // 這就是你原本在 vite.config 裡的 runes 設定
-            runes: ({ filename }) =>
-                filename.split(/[/\\]/).includes('node_modules') ? undefined : true
+            // 將 filename 明確宣告為 string
+            runes: (options: { filename: string }) =>
+                options.filename.split(/[/\\]/).includes('node_modules') ? undefined : true
         }
     }
 };
