@@ -90,6 +90,30 @@
   </div>
 </header>
 
+<section id='menu' class="section-menu">
+  <div class="container">
+    <h2 class="section-title">菜單資訊</h2>
+    <p class="menu-desc">我們的飲品選用在地茶葉，搭配軟萌小羊，帶給你最純粹的療癒體驗。</p>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="/menu1.jpg" alt="奶昔系列" class="menu-img" />
+        <h3>奶昔系列</h3>
+        <p>濃醇鮮奶搭配各式口味，冰涼不膩口。</p>
+      </div>
+      <div class="menu-item">
+        <img src="/menu2.jpg" alt="茶飲系列" class="menu-img" />
+        <h3>茶飲系列</h3>
+        <p>嚴選在地茶葉，香氣濃郁，回甘順口。</p>
+      </div>
+      <div class="menu-item">
+        <img src="/menu3.jpg" alt="甜點系列" class="menu-img" />
+        <h3>甜點系列</h3>
+        <p>搭配飲品的手工甜點，療癒你的味蕾。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="events" class="section-events">
   <div class="container">
     <h2 class="section-title">最新活動</h2>
