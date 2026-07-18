@@ -48,10 +48,10 @@
     
     <ul class="nav-links">
       <li><a href="#concept">品牌理念</a></li>
-      <li><a href="#menu">菜單</a></li>
+      <li><a href="/menu">菜單</a></li>
       <li><a href="#events">最新活動</a></li>
       <li><a href="#stores">分店資訊</a></li>
-      <li><a href="#franchise">加盟專專區</a></li>
+      <li><a href="#franchise">加盟專區</a></li>
     </ul>
 
     <!-- 【修正語法 2】將 on:click 改成 Svelte 5 的 onclick -->
@@ -67,7 +67,7 @@
   <!-- 【修正語法 3】將行動版選單的 on:click 改成 onclick -->
   <div class="mobile-menu">
     <a href="#concept" onclick={toggleMenu}>品牌理念</a>
-    <a href="#menu" onclick={toggleMenu}>菜單</a>
+    <a href="/menu" onclick={toggleMenu}>菜單</a>
     <a href="#events" onclick={toggleMenu}>最新活動</a>
     <a href="#stores" onclick={toggleMenu}>分店資訊</a>
     <a href="#franchise" onclick={toggleMenu}>加盟專區</a>
@@ -77,7 +77,7 @@
 <!-- 【優化排版】調整品牌大圖區塊結構 -->
 <section id="concept" class="section-concept-wrapper">
   <div class="concept-banner">
-    <img src="brand_picture.png" alt="John 316 品牌故事滿版大圖" class="banner-img" />
+    <img src="brand_background.svg" alt="John 316 品牌故事滿版大圖" class="banner-img" />
     <div class="banner-overlay"></div>
   </div>
 </section>
@@ -91,17 +91,6 @@
     <a href="#events" class="btn-primary">看看今天喝什麼 ➔</a>
   </div>
 </header>
-
-<section id='menu' class="section-menu">
-  <div class="container">
-    <h2 class="section-title">菜單資訊</h2>
-    <div class="menu-grid">
-      <div class="menu-item">
-        <img src="/menu_straight.svg" alt="奶昔系列" class="menu-img" />
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="events" class="section-events">
   <div class="container">
@@ -653,16 +642,5 @@
       flex-direction: column;
     }
   }
-  /* 確保容器內的圖片自適應 */
-.menu-img {
-  max-width: 100%;  /* 圖片寬度不超過容器寬度 */
-  height: auto;     /* 高度自動按比例縮放，避免變形 */
-  display: block;   /* 移除圖片下方的預設間距 */
-  margin: 0 auto;   /* 如果希望圖片置中，可加上此行 */
-}
 
-/* 確保容器本身在小螢幕不會溢出 */
-.menu-grid {
-  padding: 0 15px; /* 為手機版增加一點左右邊距 */
-}
 </style>
