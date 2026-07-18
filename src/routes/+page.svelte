@@ -67,6 +67,7 @@
   <!-- 【修正語法 3】將行動版選單的 on:click 改成 onclick -->
   <div class="mobile-menu">
     <a href="#concept" onclick={toggleMenu}>品牌理念</a>
+    <a href="#menu" onclick={toggleMenu}>菜單</a>
     <a href="#events" onclick={toggleMenu}>最新活動</a>
     <a href="#stores" onclick={toggleMenu}>分店資訊</a>
     <a href="#franchise" onclick={toggleMenu}>加盟專區</a>
