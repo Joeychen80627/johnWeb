@@ -48,6 +48,7 @@
     
     <ul class="nav-links">
       <li><a href="#concept">品牌理念</a></li>
+      <li><a href="#menu">菜單</a></li>
       <li><a href="#events">最新活動</a></li>
       <li><a href="#stores">分店資訊</a></li>
       <li><a href="#franchise">加盟專專區</a></li>
@@ -93,22 +94,9 @@
 <section id='menu' class="section-menu">
   <div class="container">
     <h2 class="section-title">菜單資訊</h2>
-    <p class="menu-desc">我們的飲品選用在地茶葉，搭配軟萌小羊，帶給你最純粹的療癒體驗。</p>
     <div class="menu-grid">
       <div class="menu-item">
-        <img src="/menu1.jpg" alt="奶昔系列" class="menu-img" />
-        <h3>奶昔系列</h3>
-        <p>濃醇鮮奶搭配各式口味，冰涼不膩口。</p>
-      </div>
-      <div class="menu-item">
-        <img src="/menu2.jpg" alt="茶飲系列" class="menu-img" />
-        <h3>茶飲系列</h3>
-        <p>嚴選在地茶葉，香氣濃郁，回甘順口。</p>
-      </div>
-      <div class="menu-item">
-        <img src="/menu3.jpg" alt="甜點系列" class="menu-img" />
-        <h3>甜點系列</h3>
-        <p>搭配飲品的手工甜點，療癒你的味蕾。</p>
+        <img src="/menu_straight.svg" alt="奶昔系列" class="menu-img" />
       </div>
     </div>
   </div>
@@ -664,4 +652,16 @@
       flex-direction: column;
     }
   }
+  /* 確保容器內的圖片自適應 */
+.menu-img {
+  max-width: 100%;  /* 圖片寬度不超過容器寬度 */
+  height: auto;     /* 高度自動按比例縮放，避免變形 */
+  display: block;   /* 移除圖片下方的預設間距 */
+  margin: 0 auto;   /* 如果希望圖片置中，可加上此行 */
+}
+
+/* 確保容器本身在小螢幕不會溢出 */
+.menu-grid {
+  padding: 0 15px; /* 為手機版增加一點左右邊距 */
+}
 </style>
