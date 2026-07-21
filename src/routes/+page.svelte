@@ -1,18 +1,18 @@
 <script>
   // 品牌基本資訊設定
-  const brandName = "John 316";
-  const siteDescription = "遇見一杯溫暖與良善。John 316 用最純粹的在地茶葉與軟萌小羊，溫暖你的日常。";
+  const brandName = "John 316 神僕茶道";
+  const siteDescription = "遇見一杯溫暖與良善。John316 神僕茶道 用最純粹的在地茶葉與軟萌小羊，溫暖你的日常。";
   
   // 最新活動資料
   const events = [
     { 
-      title: "奶昔全系列 🌟 加OREO碎片", 
+      title: "神僕茶道 奶昔全系列 🌟 加OREO碎片", 
       desc: "限時嚐鮮！冰涼濃醇鮮奶且不膩口的奶昔，加上OREO碎片，口感加倍。", 
       badge: "熱賣中",
       image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&q=80&w=600"
     },
     { 
-      title: "自備環保杯 🌍 療癒大地球", 
+      title: "神僕茶道 自備環保杯 🌍 療癒大地球", 
       desc: "響應環保，凡自備環保杯至各分店購買任意飲品，現折 5 元！", 
       badge: "長期活動",
       image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600"
@@ -21,8 +21,8 @@
 
   // 分店資訊
   const stores = [
-    { name: "新北林口總店", phone: "02-2608-1202", address: "新北市林口區文化二路一段68巷2號", hours: "11:00 - 20:30" },
-    { name: "日本東京店（籌備中）" }
+    { name: "神僕茶道-新北林口總店", phone: "02-2608-1202", address: "新北市林口區文化二路一段68巷2號", hours: "11:00 - 20:30" },
+    { name: "神僕茶道-日本東京店（籌備中）" }
   ];
 
   // 【修正語法 1】使用 Svelte 5 的 $state 聲明反應性變數
@@ -77,7 +77,7 @@
 <!-- 【優化排版】調整品牌大圖區塊結構 -->
 <section id="concept" class="section-concept-wrapper">
   <div class="concept-banner">
-    <img src="brand_background.svg" alt="John 316 品牌故事滿版大圖" class="banner-img" />
+    <img src="brand_background.svg" alt="John316 神僕茶道 品牌故事滿版大圖" class="banner-img" />
     <div class="banner-overlay"></div>
   </div>
 </section>
@@ -86,9 +86,9 @@
 <header class="hero">
   <div class="hero-content">
     <img src="/logo.svg" alt="John 316 大 Logo" class="hero-logo" />
-    <h1>遇見一杯滿足與喜樂</h1>
+    <h1>神僕茶道 - 遇見一杯滿足與喜樂</h1>
     <p>日常裡的微小歇息，都有小羊陪著你。</p>
-    <a href="#events" class="btn-primary">看看今天喝什麼 ➔</a>
+    <a href="https://line-order.john-316.app" class="btn-primary" target="_blank" rel="noopener noreferrer">看看今天喝什麼 ➔</a>
   </div>
 </header>
 
@@ -114,7 +114,7 @@
 
 <section id="stores" class="section-stores">
   <div class="container">
-    <h2 class="section-title">分店資訊</h2>
+    <h2 class="section-title">神僕茶道 - 分店資訊</h2>
     <div class="stores-grid">
       {#each stores as store}
         <div class="store-card">
@@ -135,15 +135,15 @@
 <section id="franchise" class="section-franchise">
   <div class="container">
     <div class="franchise-box">
-      <h2 class="section-title">加盟專區</h2>
-      <p class="franchise-subtitle">渴望擁有自己的療癒小天地嗎？歡迎加入 John 316 大家庭！</p>
+      <h2 class="section-title">神僕茶道 - 加盟專區</h2>
+      <p class="franchise-subtitle">渴望擁有自己的療癒小天地嗎？歡迎加入 John316 神僕茶道 大家庭！</p>
       <div class="franchise-features">
         <div class="feat">🐾 完整技術培訓與全方位營運指導</div>
         <div class="feat">🎨 獨家萌系羊羊週邊與社群品牌行銷</div>
         <div class="feat">📈 健全供應鏈，嚴格控管原物料品質</div>
       </div>
       <a href="tel:0921954246" class="btn-franchise">
-        📝 加盟電話聯絡：0921954246 (吳專員)
+        📝 加盟電話聯絡：0921954246
       </a>
     </div>
   </div>
@@ -157,7 +157,7 @@
     </div>
     
     <div class="footer-info">
-      <p><strong>📞 聯絡電話：</strong>0916717797</p>
+      <p><strong>📞 聯絡電話：</strong>02-26081202</p>
       <p><strong>📍 總部地址：</strong>新北市林口區文化一路一段100巷51號</p>
       <p>
         <strong>💬 官方 LINE 帳號：</strong>
